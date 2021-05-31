@@ -1,4 +1,4 @@
-import { css } from '@emotion/react';
+import { css, keyframes } from '@emotion/react';
 import { useState } from 'react';
 
 import { AiFillGithub } from 'react-icons/ai';
@@ -28,7 +28,8 @@ export function ProjectItem({
             `
           : undefined,
       ]}
-      onClick={(_) => setDetailOpen((prev) => !prev)}>
+      onMouseEnter={(_) => setDetailOpen(true)}
+      onMouseLeave={(_) => setDetailOpen(false)}>
       <div>
         <p>{project_name}</p>
         <a href={`https://github.com/${user}/${repo}/stargazers`} target='_blank'>
@@ -69,9 +70,17 @@ export function ProjectItem({
   );
 }
 
+const zoomIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
+
 const styles = {
   projectItem: css`
-    cursor: pointer;
     position: relative;
     width: 300px;
     height: 220px;
@@ -132,6 +141,7 @@ const styles = {
         height: 100%;
         padding: 18px;
         position: relative;
+        animation: ${zoomIn} 0.3s ease-in 1;
 
         > span {
           > div {

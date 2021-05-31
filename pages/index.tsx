@@ -17,7 +17,6 @@ export async function getStaticProps() {
         },
       })
         .then((res) => {
-          console.log(res);
           return res.status === 200 ? res.json() : [];
         })
         .then((res) => res.length);
