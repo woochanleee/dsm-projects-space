@@ -114,6 +114,7 @@ const styles = {
     animation: 0.5s ${zoomIn} ease-in-out;
   `,
   addProjectContent: css`
+    max-width: calc(100vw - 60px);
     width: 360px;
     height: 400px;
     border-radius: 14px;
@@ -169,6 +170,10 @@ const styles = {
           width: 100%;
           display: flex;
           justify-content: space-between;
+
+          > input {
+            width: 50%;
+          }
         }
 
         > input {
